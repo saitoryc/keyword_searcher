@@ -17,6 +17,17 @@ while ws.rows[current_row].columns[4].value != "" do
 	if check
 		ws.rows[current_row].columns[8].value = "OK"
 		ws.rows[current_row].Interior.ColorIndex = 43
+
+		lines = searchWord.split("¥n")
+		lineCnt = 1
+		for line in lines do
+			if (line.include?(searchWord))
+				ws.rows[current_row].columns[9].value = lineCnt
+				ws.rows[current_row].columns[10].value = line
+				break
+			end
+			lineCnt = lineCnt + 1
+		end
 	else
 		ws.rows[current_row].columns[8].value = "NG"
 		ws.rows[current_row].Interior.ColorIndex = 3
